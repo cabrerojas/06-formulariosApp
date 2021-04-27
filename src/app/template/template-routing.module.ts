@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DinamicosComponent } from './dinamicos/dinamicos.component';
-import { SwitchesComponent } from './switches/switches.component';
-import { BasicosComponent } from './basicos/basicos.component';
+import { DinamicosComponent } from './pages/dinamicos/dinamicos.component';
+import { SwitchesComponent } from './pages/switches/switches.component';
+import { BasicosComponent } from './pages/basicos/basicos.component';
 
 const routes: Routes = [
   {
