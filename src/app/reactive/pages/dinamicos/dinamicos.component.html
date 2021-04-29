@@ -1,0 +1,94 @@
+<h2>Rectivos: <small> Dinámicos</small> </h2>
+
+<hr>
+
+<form (ngSubmit)="guardar()" [formGroup]="miFormulario" autocomplete="off">
+
+<!-- Nombre -->
+    <div class="mb-3 row">
+        <label  class="col-sm-3 col-form-label" for="">Nombre</label>
+        <div class="col-sm-9">
+
+            <input type="text" 
+                    class="form-control"
+                    placeholder="Nombre de la persona"
+                    formControlName="nombre">
+
+            <span class="form-text text-danger"
+            *ngIf="campoNoValido('nombre')"> 
+            Este campo es obligatorio 
+            </span>
+        </div>
+
+    </div>
+
+    <!-- Agregar Favorito-->
+    <div class="mb-3 row">
+        <label  class="col-sm-3 col-form-label" for="">Agregar</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                
+                <input type="datetime" 
+                        class="form-control"
+                        placeholder="Agregar favorito"
+                        [formControl]="nuevoFavorito"
+                        (keyup.enter)="agregarFavorito()">
+
+                <button class="btn btn-outline-primary"
+                        (click)="agregarFavorito()"
+                        type="button">
+                        Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+
+<!-- Lista de juegos favoritos -->
+    <div class="mb-3 row">
+        <label  class="col-sm-3 col-form-label" for="">Favoritos</label>
+        <div class="col-sm-9" formArrayName="favoritos" >
+
+            <div class="input-group mb-1"
+                *ngFor="let favorito of favortiosArr.controls; let i = index">
+                <input  class="form-control"
+                        [formControlName]="i">
+
+                <button class="btn btn-outline-danger"
+                        (click)="borrar(i)"
+                        type="button">
+                    Borrar
+                </button>
+            </div> 
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+           <button type="button"    
+                    class="btn btn-warning float-end"
+                    (click)="guardar()">
+               Guardar
+           </button>
+        </div>
+
+    </div>
+
+</form>
+
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{ miFormulario.valid }}</pre>
+
+        <span>value</span>
+        <pre>{{ miFormulario.value | json }}</pre>
+
+        <span>Agregar favorito</span>
+        <pre>{{ nuevoFavorito.valid }}</pre>
+
+    </div>
+</div> 
