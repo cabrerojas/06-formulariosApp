@@ -1,0 +1,153 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="submitFormulario()" [formGroup]="miFormulario" >
+
+            <!-- Nombre -->
+            <div class="row mb-3">
+                
+                <label class="col-sm-3 col-form-label" for="">Nombre</label>
+                <div class="col-sm-9">    
+                    <input type="text"
+                            class="form-control"
+                            formControlName="nombre"
+                            placeholder="Nombre del usuario">
+                    <span class="form-text text-danger"
+                            *ngIf="campoNoValido('nombre')"> 
+                        Debe de ser en formato de nombre y apellido     
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- Correo -->
+            <div class="row mb-3">
+                
+                <label class="col-sm-3 col-form-label" for="">Correo</label>
+                <div class="col-sm-9">   
+                    <input type="email"
+                            class="form-control"
+                            formControlName="correo"
+                            placeholder="Correo del usuario">
+                    <span class="form-text text-danger"
+                            *ngIf="campoNoValido('correo')"> 
+                        {{ emailErrorMsg }}     
+                    </span>
+                            
+                    <!-- <span class="form-text text-danger"
+                            *ngIf="emailRequired()"> 
+                        El correo es obligatorio     
+                    </span>
+                    <span class="form-text text-danger"
+                            *ngIf="emailFormato()"> 
+                        Lo escrito no tiene formato de correo     
+                    </span>
+                    <span class="form-text text-danger"
+                            *ngIf="emailFormato()"> 
+                        Este correo ya existe     
+                    </span>
+                     -->
+                </div>
+            </div>
+
+
+            <!-- Username -->
+            <div class="row mb-3">
+                
+                <label class="col-sm-3 col-form-label" for="">Nombre de Usuario</label>
+                <div class="col-sm-9">    
+                    <input type="text"
+                            class="form-control"
+                            formControlName="usuario"
+                            placeholder="Nombre código del usuario"
+                            >
+
+                    <span class="form-text text-danger"
+                        *ngIf="campoNoValido('usuario')"> 
+                        El usuario no puede ser Memo  
+                    </span>
+
+                </div>
+            </div>
+
+
+            <!-- Password -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label" for="">Contraseña</label>
+                <div class="col-sm-9">
+                    <input type="password"
+                            class="form-control"
+                            formControlName="contrasena"
+                            placeholder="Contraseña de su cuenta"
+                            >
+                    <span class="form-text text-danger"
+                        *ngIf="campoNoValido('contrasena')"> 
+                        La contraseña debe contener al menos 6 caracteres. 
+                    </span>
+
+                </div>
+            </div>
+
+            <!-- Password2-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label" for="">Confirmar contraseña</label>
+                <div class="col-sm-9">
+                    <input type="password"
+                            class="form-control"
+                            formControlName="contrasena2"
+                            placeholder="Confirmar contraseña"
+                            >
+                    <span class="form-text text-danger"
+                            *ngIf="campoNoValido('contrasena2')"> 
+                            Las contraseñas debe de ser iguales.
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary float-end" type="submit"
+                            [disabled]="miFormulario.pending">
+                        Registrarse
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+<h2>
+    Form Valid: {{ miFormulario.valid }}
+</h2>
+<h2>
+    Form Status: {{ miFormulario.status }}
+</h2>
+<h2>
+    Form Pending: {{ miFormulario.pending }}
+</h2>
+
+<h2>
+    Form Erros: {{ miFormulario.errors | json }}
+</h2>
+
+<h5>Nombre</h5>
+<pre>{{  miFormulario.controls.nombre.errors | json  }}</pre>
+
+<h5>Correo</h5>
+<pre>{{  miFormulario.controls.correo.errors | json  }}</pre>
+
+<h5>Usuario</h5>
+<pre>{{  miFormulario.controls.usuario.errors | json  }}</pre>
+
+<h5>Contraseña</h5>
+<pre>{{  miFormulario.controls.contrasena.errors | json  }}</pre>
+
+
+<h5>Confirmar Contraseña</h5>
+<pre>{{  miFormulario.controls.contrasena2.errors | json  }}</pre>

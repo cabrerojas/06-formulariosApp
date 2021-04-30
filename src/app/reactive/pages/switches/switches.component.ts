@@ -28,6 +28,7 @@ export class SwitchesComponent implements OnInit  {
       terminos: false
     });
 
+    // tslint:disable-next-line: deprecation
     this.miFormulario.valueChanges.subscribe( ({terminos, ...rest}) => {
       this.persona = rest;
 
