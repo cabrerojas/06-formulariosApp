@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Application In Production
 
-https://agitated-cori-c507ae.netlify.app/template/basicos
+https://agitated-cori-c507ae.netlify.app
 
 ## Development server
 
